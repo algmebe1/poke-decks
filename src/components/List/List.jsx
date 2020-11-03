@@ -8,7 +8,7 @@ function List() {
 	const [cards, setCards] = useState(cardsStore.getCards());
 
 	useEffect(() => {
-		debugger;
+
 		cardsStore.addEventListener(onChange);
 
 		/* REVISAR */
