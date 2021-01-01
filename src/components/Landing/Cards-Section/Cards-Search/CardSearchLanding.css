@@ -13,6 +13,7 @@ body {
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 0px 25px 25px 0px;
 	width: 48%;
+	height: 445px;
 	z-index: 1;
 }
 
@@ -31,8 +32,9 @@ body {
 	transition: transform 0.2s;
 }
 
-.images__title > p {
+.images__title__text {
 	color: white;
+	font-weight: 900;
 }
 
 .images__title:hover {
@@ -42,6 +44,11 @@ body {
 .title__link:link,
 .title__link:visited,
 .title__link:active {
+	outline-style: none;
+	text-decoration: none;
+}
+
+#images__button-search-button:link {
 	outline-style: none;
 	text-decoration: none;
 }
@@ -67,6 +74,8 @@ body {
 }
 
 #button-search__cards-home {
+	display: flex;
+	align-items: center;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding: 10px 20px;
@@ -77,7 +86,6 @@ body {
 	border-radius: 5px;
 	outline-style: none;
 	cursor: pointer;
-	outline: none;
 	background-color: #1e5799;
 }
 

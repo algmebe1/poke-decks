@@ -7,6 +7,7 @@ body {
 .desktop-header {
 	position: fixed;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	top: 0;
 	right: 0;
@@ -29,32 +30,38 @@ body {
 	height: 60px;
 }
 
-.desktop-header__title {
-	width: 200px;
-	height: auto;
-	cursor: pointer;
-}
-
 .title__body {
 	display: none;
 }
 
 #login__icon {
-	font-size: 30px;
+	font-size: 28px;
+}
+
+.signin_text {
+	display: block;
 }
 
 @media screen and (max-width: 900px) {
-	.desktop-header__title {
-		display: none;
-	}
-
 	#login__sign {
 		display: none;
 	}
 }
 
-@media screen and (max-width: 715px) {
+@media screen and (max-width: 900px) {
+	.user-login-email {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 750px) {
 	#logo__tgc {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 715px) {
+	.desktop-header__title {
 		display: none;
 	}
 
@@ -89,9 +96,18 @@ body {
 	padding-right: 10px;
 }
 
+.desktop-header__block {
+	display: flex;
+	align-items: center;
+	width: 33%;
+}
+
+.flex-end {
+	justify-content: flex-end;
+}
+
 .desktop-header__options {
 	display: flex;
-	flex: 1;
 }
 
 .desktop-header__menu-bar {
@@ -105,7 +121,7 @@ body {
 	cursor: pointer;
 	color: white;
 	border: 1px;
-	outline: none;
+	outline-style: none;
 	font-weight: 700;
 	font-size: 14px;
 }
@@ -148,32 +164,61 @@ body {
 }
 
 .menu-bar__dropdown:hover,
-.dropdown-content span:hover:hover {
+.dropdown-content span:hover {
 	color: #ffe300;
 }
 
 .desktop-header__login {
-	flex: 1;
 	display: flex;
 	justify-content: flex-end;
-    align-items: center;
-    margin-right: 30px;
-}
-
-.desktop-header__login__block {
-	display: flex;
-	justify-content: center;
 	align-items: center;
+	height: 30px;
+	width: auto;
+	margin: 0 20px;
+	font-weight: 600;
 }
 
-.desktop-header__login__block:hover > span {
-	color: #ffe300;
+.desktop-header__login__button {
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 900;
+	color: white;
+	margin: 0 10px;
+	border-radius: 10px;
+	transition: transform 0.3s;
+}
+
+.desktop-header__login__button:hover {
+	color: yellow;
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+#google_icon {
+	width: 40px;
+	margin-right: -3px;
+}
+
+.logout {
+	margin-left: 0px;
+	margin-right: 40px;
+}
+
+.user-login-email {
+	color: white;
+	font-weight: 900;
 }
 
 .desktop-header__title {
 	color: #ffe300;
 	font-weight: 700;
 	font-size: 22px;
+	cursor: pointer;
+	justify-self: center;
+	width: 200px;
+	height: auto;
+	justify-self: center;
 	cursor: pointer;
 }
 
@@ -188,7 +233,6 @@ body {
 .desktop-header__logotgc {
 	display: block;
 	justify-content: flex-end;
-	flex: 0.25;
 	padding-right: 0px;
 }
 

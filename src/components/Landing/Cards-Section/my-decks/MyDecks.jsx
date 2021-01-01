@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { loadDecks } from '../../../../actions/action-creators';
+import authStore from '../../../../stores/auth-store';
 import cardsStore from '../../../../stores/store';
+import MyDeckBlock from './MyDeckBlock/MyDeckBlock';
 import './MyDecks.css';
 
 function MyDecks() {
 	const [decks, setDecks] = useState(cardsStore.getDecks());
+	const [user, setUser] = useState(authStore.getUser());
 
 	function handleChange() {
 		setDecks(cardsStore.getDecks());
+		setUser(authStore.getUser());
 	}
 
 	useEffect(() => {
 		cardsStore.addEventListener(handleChange);
+		authStore.addEventListener(handleChange);
 
 		if (!decks || decks.length < 1) {
 			loadDecks();
@@ -20,38 +24,11 @@ function MyDecks() {
 
 		return () => {
 			cardsStore.removeEventListener(handleChange);
+			authStore.removeEventListener(handleChange);
 		};
-	}, [decks]);
+	}, [decks, user]);
 
-	return (
-		<div id="image__cards-deck" className="deckSection__images">
-			<Link className="title__link" to="/my-decks">
-				<div className="images__title">
-					<h2>MY DECKS</h2>
-					<p>
-						It's time to create!<br></br>Customize decks whatever you want
-					</p>
-				</div>
-			</Link>
-			<div className="images__cards">
-				{decks.map((deck) => (
-					<Link to="/my-decks" key={`deck-${deck.title}`} className="MyDeck-Links">
-						<div className="cardsSection__myDeck__deckBlock">
-							<span className="cardsSection__myDeck__deckBlock__title">
-								{deck.title}
-							</span>
-							<img src={deck.url} alt={deck.imagealt} />
-						</div>
-					</Link>
-				))}
-			</div>
-			<div className="images__button-search">
-				<Link to="/my-decks">
-					<button id="button-search__cards-home">Create decks</button>
-				</Link>
-			</div>
-		</div>
-	);
+	return <MyDeckBlock props={{ user: user, decks: decks }} />;
 }
 
 export default MyDecks;

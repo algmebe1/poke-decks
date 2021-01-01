@@ -13,7 +13,16 @@ body {
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 25px 0px 0px 25px;
 	width: 48%;
+	height: 445px;
 	z-index: 1;
+}
+
+.login__wrapper-nobackground {
+    width: 50%;
+    margin: 50px auto;
+    border-radius: 20px;
+    color: rgb(251, 215, 67);
+    text-shadow: 2px 0 0 rgb(54, 59, 129), -2px 0 0 rgb(54, 59, 129), 0 2px 0 rgb(54, 59, 129), 0 -2px 0 rgb(54, 59, 129), 3px 1px rgb(54, 59, 129), -1px -1px 0 rgb(54, 59, 129), 2px -1px 0 rgb(54, 59, 129), -1px 2px 0 rgb(54, 59, 129);
 }
 
 .images__title > h2 {
@@ -70,7 +79,6 @@ body {
 	border-radius: 5px;
 	outline-style: none;
 	cursor: pointer;
-	outline: none;
 	background-color: #1e5799;
 }
 
@@ -124,6 +132,7 @@ body {
 
 	.deckSection__images {
 		width: 95%;
+		height: 50%;
 		padding-left: 3px;
 		padding-right: 3px;
 		margin-bottom: 40px;

@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cardsStore from '../../../../stores/store';
-import { loadRandomCards } from '../../../../actions/action-creators';
+import { loadCards } from '../../../../actions/action-creators';
 import './CardSearchLanding.css';
+import LoadingGif from '../../../LoadingGif/LoadingGif';
 
 function CardSearchLanding() {
-	const [cards, setCards] = useState(cardsStore.getRandomCards());
+	const [cards, setCards] = useState(null);
 
 	function handleChange() {
-		setCards(cardsStore.getRandomCards());
+		setCards(cardsStore.getCards());
 	}
 
 	useEffect(() => {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
 		cardsStore.addEventListener(handleChange);
 
-		if (!cards || !cards.length) {
-			loadRandomCards();
+		if (!cards) {
+			loadCards();
 		}
 
 		return () => {
@@ -28,14 +30,15 @@ function CardSearchLanding() {
 			<Link className="title__link" to="/cards">
 				<div className="images__title">
 					<h2>SEARCH BY CARDS</h2>
-					<p>
+					<p className="images__title__text">
 						Do you need information about any card?<br></br>Find it with
 						Poke-Decks' search tool!
 					</p>
 				</div>
 			</Link>
 			<div className="images__cards">
-				{cards?.map((card, index) => (
+				<LoadingGif cardSearchItems={cards} />
+				{cards?.cards.map((card, index) => (
 					<Link key={`detail-${card.name}`} to={`/detail/${card.id}`}>
 						<img
 							className="cards__png-info"
@@ -47,8 +50,11 @@ function CardSearchLanding() {
 				))}
 			</div>
 			<div className="images__button-search">
-				<Link to="/cards">
-					<button id="button-search__cards-home">Find Cards</button>
+				<Link id="images__button-search-button" to="/cards">
+					<button id="button-search__cards-home">
+						<span class="material-icons">recent_actors</span>&nbsp;
+						<span>Find Cards</span>
+					</button>
 				</Link>
 			</div>
 		</div>
